@@ -11,6 +11,30 @@ import android.os.IBinder
 
 // --- STUB ACTIVITIES ---
 sealed class StubActivity : Activity() {
+
+    override fun onCreate(savedInstanceState: android.os.Bundle?) {
+        super.onCreate(savedInstanceState)
+        val targetPackage = intent.getStringExtra("EXTRA_PACKAGE_NAME")
+        val targetActivity = intent.getStringExtra("EXTRA_TARGET_ACTIVITY")
+        val userId = intent.getIntExtra("EXTRA_USER_ID", 0)
+
+        if (targetPackage != null && targetActivity != null) {
+            try {
+                com.porto.multicloner.core.hook.VContextInjector.inject(this, targetPackage, userId)
+                val targetClassLoader = com.porto.multicloner.core.hook.VClassLoaderManager.getOrCreateClassLoader(this, targetPackage)
+                
+                val launchIntent = intent.getParcelableExtra<Intent>("EXTRA_TARGET_INTENT")
+                if (launchIntent != null && !isFinishing) {
+                    launchIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    startActivity(launchIntent)
+                    finish()
+                }
+            } catch (t: Throwable) {
+                android.util.Log.e("StubActivity", "Error in StubActivity lifecycle: ${t.message}", t)
+            }
+        }
+    }
+
     class P0 : StubActivity()
     class P1 : StubActivity()
     class P2 : StubActivity()

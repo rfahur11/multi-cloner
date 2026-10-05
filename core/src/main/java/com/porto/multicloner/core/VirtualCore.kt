@@ -61,6 +61,9 @@ class VirtualCore private constructor() {
             Log.w(TAG, "Native startup warning: ${t.message}")
         }
 
+        // Pasang Instrumentation Hook untuk men-swap StubActivity dengan Activity asli target app
+        com.porto.multicloner.core.hook.VInstrumentation.install(context)
+
         // Jalankan background daemon keep-alive
         DaemonService.start(context)
     }
@@ -138,9 +141,12 @@ class VirtualCore private constructor() {
             else -> StubActivity.P4::class.java
         }
 
+        val targetActivity = launchIntent.component?.className ?: "${profile.packageName}.Main"
+
         val proxyIntent = Intent(appContext, stubClass).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
             putExtra("EXTRA_TARGET_INTENT", launchIntent)
+            putExtra("EXTRA_TARGET_ACTIVITY", targetActivity)
             putExtra("EXTRA_USER_ID", profile.userId)
             putExtra("EXTRA_PACKAGE_NAME", profile.packageName)
             putExtra("EXTRA_PROFILE_ID", profileId)

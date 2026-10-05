@@ -29,20 +29,22 @@ Aplikasi Android berbasis **User-Space Virtualization Engine** untuk mengkloning
 - [x] Inisialisasi Layer 1 (`SYSTEM_STATE.md`, `docs/architecture.md`, `AGENTS.md`, `.gitignore`, `.env.example`)
 
 ### Phase 2: Core Virtualization Module Setup
-- [ ] Inisialisasi Android project Gradle structure (Host App + Virtual Core Module)
-- [ ] Integrasi NDK C++ Hooking binaries (`arm64-v8a` & `armeabi-v7a`)
-- [ ] Setup `VirtualCore` lifecycle di Android `Application` class (`attachBaseContext`)
+- [x] Inisialisasi Android project Gradle multi-module structure (`:app` & `:core`)
+- [x] Integrasi NDK C++ Hooking binaries (`arm64-v8a` & `armeabi-v7a`) via CMakeLists.txt & vcore_hook.cpp
+- [x] Setup `VirtualCore` lifecycle di Android `Application` class (`attachBaseContext`)
+- [x] Pendaftaran stub multi-processes `:p0`–`:p4` & `:daemon` di `AndroidManifest.xml`
+- [x] Virtual File System (`VFileSystem`) storage directory isolation
 
 ### Phase 3: Identity Spoofing & Anti-Detection
-- [ ] Virtual Identity Provider (generate random/fixed Android ID per user ID)
-- [ ] Anti-detection hooks (sembunyikan status Xposed/Frida/VirtualApp dari target app)
-- [ ] FileProvider authority proxying (mencegah conflict crash antar klon)
+- [x] Virtual Identity Provider (`DeviceSpoofManager`) untuk generate Android ID, IMEI, Build Model unik per profil
+- [x] Native JNI Stealth hook untuk menyembunyikan signature virtualization container
+- [x] Persistent background service daemon (`DaemonService`)
 
 ### Phase 4: UI & App Management
-- [ ] Dashboard launcher dengan tampilan grid aplikasi terklon
-- [ ] App picker modal (memilih aplikasi terinstall di HP host untuk diklon)
-- [ ] Profile renamer & status badge ("WA Olshop 1", "WA Pribadi", dll)
-- [ ] One-tap launch per user space (`VirtualCore.get().launchApp(packageName, userId)`)
+- [x] Dashboard launcher Jetpack Compose Material 3 (`DashboardScreen.kt`) dengan status engine
+- [x] App picker modal (`AppPickerModal.kt`) untuk memindai aplikasi sosial media terpasang
+- [x] Profile alias manager & KTP hardware display (Android ID pill)
+- [x] One-tap launch per user space ke stub process terisolasi
 
 ### Phase 5: QA Testing & Edge Case Verification
 - [ ] Uji coba isolasi SQLite database antar klon

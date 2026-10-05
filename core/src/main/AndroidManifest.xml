@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application>
+
+        <!-- Stub Process :p0 (User Space 0) -->
+        <activity
+            android:name=".stub.StubActivity$P0"
+            android:process=":p0"
+            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|screenLayout|fontScale|uiMode|orientation|screenSize|smallestScreenSize|layoutDirection"
+            android:hardwareAccelerated="true"
+            android:windowSoftInputMode="adjustPan"
+            android:exported="false" />
+        <service
+            android:name=".stub.StubService$P0"
+            android:process=":p0"
+            android:exported="false" />
+        <provider
+            android:name=".stub.StubContentProvider$P0"
+            android:authorities="${applicationId}.core.stub.p0"
+            android:process=":p0"
+            android:exported="false" />
+
+        <!-- Stub Process :p1 (User Space 1) -->
+        <activity
+            android:name=".stub.StubActivity$P1"
+            android:process=":p1"
+            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|screenLayout|fontScale|uiMode|orientation|screenSize|smallestScreenSize|layoutDirection"
+            android:hardwareAccelerated="true"
+            android:windowSoftInputMode="adjustPan"
+            android:exported="false" />
+        <service
+            android:name=".stub.StubService$P1"
+            android:process=":p1"
+            android:exported="false" />
+        <provider
+            android:name=".stub.StubContentProvider$P1"
+            android:authorities="${applicationId}.core.stub.p1"
+            android:process=":p1"
+            android:exported="false" />
+
+        <!-- Stub Process :p2 (User Space 2) -->
+        <activity
+            android:name=".stub.StubActivity$P2"
+            android:process=":p2"
+            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|screenLayout|fontScale|uiMode|orientation|screenSize|smallestScreenSize|layoutDirection"
+            android:hardwareAccelerated="true"
+            android:windowSoftInputMode="adjustPan"
+            android:exported="false" />
+        <service
+            android:name=".stub.StubService$P2"
+            android:process=":p2"
+            android:exported="false" />
+        <provider
+            android:name=".stub.StubContentProvider$P2"
+            android:authorities="${applicationId}.core.stub.p2"
+            android:process=":p2"
+            android:exported="false" />
+
+        <!-- Stub Process :p3 (User Space 3) -->
+        <activity
+            android:name=".stub.StubActivity$P3"
+            android:process=":p3"
+            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|screenLayout|fontScale|uiMode|orientation|screenSize|smallestScreenSize|layoutDirection"
+            android:hardwareAccelerated="true"
+            android:windowSoftInputMode="adjustPan"
+            android:exported="false" />
+        <service
+            android:name=".stub.StubService$P3"
+            android:process=":p3"
+            android:exported="false" />
+        <provider
+            android:name=".stub.StubContentProvider$P3"
+            android:authorities="${applicationId}.core.stub.p3"
+            android:process=":p3"
+            android:exported="false" />
+
+        <!-- Stub Process :p4 (User Space 4) -->
+        <activity
+            android:name=".stub.StubActivity$P4"
+            android:process=":p4"
+            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|screenLayout|fontScale|uiMode|orientation|screenSize|smallestScreenSize|layoutDirection"
+            android:hardwareAccelerated="true"
+            android:windowSoftInputMode="adjustPan"
+            android:exported="false" />
+        <service
+            android:name=".stub.StubService$P4"
+            android:process=":p4"
+            android:exported="false" />
+        <provider
+            android:name=".stub.StubContentProvider$P4"
+            android:authorities="${applicationId}.core.stub.p4"
+            android:process=":p4"
+            android:exported="false" />
+
+        <!-- Daemon Keep-Alive Process -->
+        <service
+            android:name=".daemon.DaemonService"
+            android:process=":daemon"
+            android:exported="false" />
+
+    </application>
+
+</manifest>

@@ -1,0 +1,25 @@
+# Gradle & Android Build Output
+.gradle/
+build/
+app/build/
+core/build/
+*.apk
+*.aab
+
+# Local Configuration & Secrets
+local.properties
+.env
+*.jks
+*.keystore
+
+# IDE Files
+.idea/
+*.iml
+.vscode/
+.DS_Store
+
+# C++ / NDK Build
+.cxx/
+.externalNativeBuild/
+core/src/main/obj/
+core/src/main/libs/

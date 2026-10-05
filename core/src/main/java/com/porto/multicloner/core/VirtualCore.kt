@@ -50,7 +50,7 @@ class VirtualCore private constructor() {
      * Inisialisasi VirtualCore pada saat Application.attachBaseContext()
      */
     fun doStartup(context: Context) {
-        this.appContext = context.applicationContext
+        this.appContext = context.applicationContext ?: context
         val apiLevel = Build.VERSION.SDK_INT
         val hostPkg = context.packageName
 

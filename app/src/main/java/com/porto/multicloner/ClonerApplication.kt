@@ -8,11 +8,11 @@ class ClonerApplication : Application() {
 
     override fun attachBaseContext(base: Context) {
         super.attachBaseContext(base)
-        // Inisialisasi engine virtualisasi pada tahap paling awal aplikasi
-        VirtualCore.get().doStartup(this)
     }
 
     override fun onCreate() {
         super.onCreate()
+        // Inisialisasi engine virtualisasi saat Application context sudah terikat sempurna
+        VirtualCore.get().doStartup(this)
     }
 }
